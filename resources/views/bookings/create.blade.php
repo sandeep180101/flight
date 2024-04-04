@@ -10,6 +10,7 @@
     <p>Customer: {{ $customer->name }}</p>
     <p>Flight: {{ $flight->flight_number }}</p>
     @php
+        $seatNumber = 0;
         $row = chr(65 + (int) ceil($seatNumber / 20)); 
         $seat = $seatNumber % 20 == 0 ? 20 : $seatNumber % 20; 
         $seatNumber = $row . $seat;

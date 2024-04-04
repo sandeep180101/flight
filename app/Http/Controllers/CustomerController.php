@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use Illuminate\Http\Request;
 use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index($custid,$flightid)
+    public function index()
     {
+        $flight =Flight::all();
         $customers = Customer::all();
-        return view('customers.index', compact('customers'));
+        return view('customers.index', compact('customers','flight'));
     }
 
     public function create()

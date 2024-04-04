@@ -95,16 +95,23 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($customers as $customer)
-                     <tr>
+                    @foreach ($customers as $customer)
+                    <tr>
                         <td>{{ $customer->name }}</td>
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->age }}</td>
                         <td>{{ $customer->dob }}</td>
                         <td>{{ $customer->address }}</td>
-                        <td><a href="{{ route('bookings.create', ['custid' => $customer->id, 'flightid' => $flightid]) }}"><button>Book Ticket</button></a></td>
-                     </tr>
-                  @endforeach
+                        <td>
+                            @foreach ($flights as $flight)
+                                <a href="{{ route('bookings.create', ['custid' => $customer->id, 'flightid' => $flight->id]) }}">
+                                    <button>Book Ticket</button>
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                @endforeach
+                
                   </tbody>
                </table>
             </div>

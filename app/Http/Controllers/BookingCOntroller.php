@@ -9,9 +9,11 @@ use App\Models\Booking;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function index($custid, $flightid)
     {
-        return view('bookings.create');
+        $customer = Customer::findOrFail($custid);
+        $flight = Flight::findOrFail($flightid);
+        return view('bookings.create',compact('customer', 'flight'));
     }
 
     public function create($custid, $flightid)
