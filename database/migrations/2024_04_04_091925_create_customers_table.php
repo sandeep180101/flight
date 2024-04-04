@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('age')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('address')->nullable();
+            $table->string('id_proof_number')->nullable()->unique();
             $table->timestamps();
         });
         
