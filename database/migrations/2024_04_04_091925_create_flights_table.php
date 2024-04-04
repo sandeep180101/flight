@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('flight_company_name');
             $table->string('departure_airport');
             $table->string('arrival_airport');
-            $table->dateTime('departure_time');
-            $table->dateTime('arrival_time');
+            $table->Time('departure_time');
+            $table->Time('arrival_time');
+            $table->string('capacity');
             $table->float('price');
             $table->timestamps();
         });        

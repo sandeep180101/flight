@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Customers</title>
-      <style>
-         body {
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Customers</title>
+   <style>
+      body {
          background-color: burlywood;
          font-family: Arial, sans-serif;
          margin: 0;
          padding: 0;
-         }
-         .navbar {
+      }
+      .navbar {
          background-color: #f8f9fa;
          padding: 15px 0;
-         }
-         .navbar-brand {
+      }
+      .navbar-brand {
          font-size: 24px;
-         }
-         .navbar-nav .nav-link {
+      }
+      .navbar-nav .nav-link {
          font-size: 18px;
          color: #333;
-         }
-         .navbar-nav .nav-link:hover {
+      }
+      .navbar-nav .nav-link:hover {
          color: #007bff;
-         }
-         .main-content {
+      }
+      .main-content {
          padding: 20px;
-         }
-         .form-group {
+      }
+      .form-group {
          margin-bottom: 20px;
-         }
-         .form-label {
+      }
+      .form-label {
          font-weight: bold;
-         }
-         .container
-         {
+      }
+      .container {
          text-align: center;
-         }
-         .btn {
+      }
+      .btn {
          display: inline-block;
          padding: 8px 16px;
          font-size: 16px;
@@ -48,67 +47,70 @@
          color: #fff;
          transition: background-color 0.3s;
          float: right;
-         }
-         .btn:hover {
+      }
+      .btn:hover {
          background-color: #0056b3;
-         }
-         .table {
+      }
+      .table {
          width: 100%;
          border-collapse: collapse;
          border-radius: 1px solid black;
-         }
-         .table th,
-         .table td {
+      }
+      .table th,
+      .table td {
          padding: 10px;
          border: 1px solid black;
-         }
-         .table th {
+      }
+      .table th {
          background-color: #f2f2f2;
          font-weight: bold;
          text-align: center;
-         }
-         .table tr:nth-child(even) {
+      }
+      .table tr:nth-child(even) {
          background-color: #f9f9f9;
-         }
-         .table tr:hover {
+      }
+      .table tr:hover {
          background-color: #f0f0f0;
-         }
-      </style>
-   </head>
-   <body>
-      <div class="collapse navbar-collapse" id="navbarNav">
-         <a class="nav-link" href="{{ route('customers.create') }}"><button type="button" class="btn btn-primary">Add Customer</button></a>
-      </div>
-      <div class="container">
-      <div class="row justify-content-center">
-         <div class="col-md-8">
-            <div class="card">
-               <div class="card-body">
-                  <table class="table">
-                     <thead>
-                        <tr>
-                           <th>Name</th>
-                           <th>Email</th>
-                           <th>Age</th>
-                           <th>Date of Birth</th>
-                           <th>Address</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        @foreach ($customers as $customer)
-                        <tr>
-                           <td>{{ $customer->name }}</td>
-                           <td>{{ $customer->email }}</td>
-                           <td>{{ $customer->age }}</td>
-                           <td>{{ $customer->dob }}</td>
-                           <td>{{ $customer->address }}</td>
-                        </tr>
-                        @endforeach
-                     </tbody>
-                  </table>
-               </div>
+      }
+   </style>
+</head>
+<body>
+<div class="collapse navbar-collapse" id="navbarNav">
+   <a class="nav-link" href="{{ route('customers.create') }}"><button type="button" class="btn btn-primary">Add Customer</button></a>
+</div>
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="col-md-8">
+         <div class="card">
+            <div class="card-body">
+               <table class="table">
+                  <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Age</th>
+                     <th>Date of Birth</th>
+                     <th>Address</th>
+                     <th>Book Ticket</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  @foreach ($customers as $customer)
+                     <tr>
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->age }}</td>
+                        <td>{{ $customer->dob }}</td>
+                        <td>{{ $customer->address }}</td>
+                        <td><a href="{{ route('bookings.create', ['custid' => $customer->id, 'flightid' => $flightid]) }}"><button>Book Ticket</button></a></td>
+                     </tr>
+                  @endforeach
+                  </tbody>
+               </table>
             </div>
          </div>
       </div>
-   </body>
+   </div>
+</div>
+</body>
 </html>

@@ -7,7 +7,7 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index($custid,$flightid)
     {
         $customers = Customer::all();
         return view('customers.index', compact('customers'));
